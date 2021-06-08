@@ -1,0 +1,8 @@
+<div class="container" *ngIf="computers.length > 0">
+    <div class="item" *ngFor="let pc of computers">
+        <p>{{pc.name}}</p>
+        <span>Ram: {{pc.ram}} GB</span>
+        <span>HDD: {{pc.hdd}} GB</span>
+    </div>
+</div>
+<p style="text-align: center;" *ngIf="computers.length === 0">No Computer added yet.</p>

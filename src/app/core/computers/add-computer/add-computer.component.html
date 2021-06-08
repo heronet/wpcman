@@ -1,0 +1,16 @@
+<div class="container">
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <p style="font-size: 1.5rem; text-align: center; margin-top: 0;">Add Computer</p>
+        <input ngModel type="text" name="name" id="name" placeholder="Name" class="field" required>
+        <input ngModel type="text" name="cpu" id="cpu" placeholder="Processor" class="field" required>
+        <input ngModel type="number" name="ram" id="ram" placeholder="RAM" class="field" required>
+        <input ngModel type="number" name="hdd" id="hdd" placeholder="HDD" class="field" required>
+        <input ngModel type="text" name="motherboard" id="motherboard" placeholder="Motherboard" class="field" required>
+        <input ngModel type="text" name="monitor" id="monitor" placeholder="Monitor" class="field" required>
+        <input ngModel type="text" name="psu" id="psu" placeholder="PSU" class="field" required>
+        <textarea cols="6" ngModel type="text" name="description" id="description" placeholder="Description" class="field" required></textarea>
+        <button type="submit" [disabled]="isLoading || form.invalid">{{isLoading ? 'Please Wait...': 'Submit'}}</button>
+        <p *ngIf="serverError" class="error-text">{{serverError}}</p>
+    </form>
+</div>
+

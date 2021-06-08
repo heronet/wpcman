@@ -1,0 +1,8 @@
+<div class="container">
+    <a class="brand" routerLink="/" >PCman</a>
+    <a style="flex: 1 1 auto"></a>
+    <a class="link bs" routerLink="/login" *ngIf="!isAuthenticated">Login</a>
+    <a class="link bs" routerLink="/register" *ngIf="!isAuthenticated">Signup</a>
+    <a class="link bs" routerLink="/computers/add-computer" *ngIf="isAuthenticated">Add Computer</a>
+    <a class="link bs" (click)="onLogout()" *ngIf="isAuthenticated">Logout</a>
+</div>

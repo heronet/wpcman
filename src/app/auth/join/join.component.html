@@ -1,0 +1,17 @@
+<div class="container">
+    <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <p style="font-size: 1.5rem; text-align: center; margin-top: 0;">{{pageMode | titlecase}}</p>
+        <input ngModel type="text" name="name" id="name" autocomplete="off" placeholder="Neme" required class="field" *ngIf="pageMode === 'register'">
+        <input ngModel type="email" name="email" id="email" autocomplete="off" placeholder="E-mail" required class="field" email>
+        <input ngModel type="text" name="eduId" id="eduId" autocomplete="off" placeholder="College Id" required class="field" *ngIf="pageMode === 'register'">
+        <input 
+            ngModel
+            [type]="'password'"
+            name="password" id="password" placeholder="Password" required class="field">
+        <button type="submit" [disabled]="isLoading || form.invalid">{{isLoading ? 'Please Wait...': (pageMode === 'login' ? 'Login': 'Register')}}</button>
+        <p *ngIf="serverError" class="error-text">{{serverError}}</p>
+        <div *ngIf="serverErrors" class="error-text">
+            <p *ngFor="let error of serverErrors">{{error}}</p>
+        </div>
+    </form>
+</div>

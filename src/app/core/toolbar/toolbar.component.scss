@@ -1,0 +1,38 @@
+.container {
+    height: 50px;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color: #fff;
+    user-select: none;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    z-index: 999;
+}
+.brand {
+    margin: 13px 0 0 15px;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.link {
+  margin: 13px 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .bs {
+    display: none;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .ss {
+    display: none;
+  }
+}
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
