@@ -1,0 +1,36 @@
+$text-color: #afafaf;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90vw;
+  flex-wrap: wrap;
+}
+.items {
+ width: 400px;
+ display: flex;
+ flex-direction: column;
+ margin: 20px auto;
+ padding: 20px;
+ border: #afafaf 1px solid;
+}
+.items > div {
+    font-size: 1.2rem;
+}
+.error-text {
+  text-align: center;
+  color: crimson;
+  font-size: 1.2rem;
+}
+button {
+    margin-bottom: 0;
+    color: white;
+    background-color: crimson;
+}
+@media only screen and (max-width: 600px) {
+  .items {
+    width: 250px;
+  }
+}

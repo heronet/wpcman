@@ -1,5 +1,4 @@
 .container {
-    height: 100%;
     width: 90vw;
     display: flex;
     flex-direction: column;
@@ -10,7 +9,20 @@
     border: 1px gray solid;
     width: 90%;
     margin: 2px;
+    padding: 2px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.item:hover {
+    color: #000;
+    background-color: aqua;
+}
+button {
+    margin: 0 5px;
+    background-color: crimson;
+    color: #fff;
+    border-radius: 0;
 }
 span {
     margin: 0 5px;

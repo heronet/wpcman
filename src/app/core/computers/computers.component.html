@@ -1,8 +1,15 @@
-<div class="container" *ngIf="computers.length > 0">
-    <div class="item" *ngFor="let pc of computers">
-        <p>{{pc.name}}</p>
-        <span>Ram: {{pc.ram}} GB</span>
-        <span>HDD: {{pc.hdd}} GB</span>
+<div class="container" *ngIf="computers.length > 0 && !isLoading">
+    <p style="margin-top: 10px; font-size: 1.5rem;">Computers</p>
+    <hr style="width: 100%;">
+    <div class="item" *ngFor="let pc of computers" [routerLink]="['/computers', pc.id]">
+        <div>
+            <p>{{pc.name}}</p>
+            <span>Ram: {{pc.ram}} GB</span>
+            <span>HDD: {{pc.hdd}} GB</span>
+        </div>
+        <span style="flex: 1 1 auto"></span>
+        <button *ngIf="isAuthenticated">Destroy</button>
     </div>
 </div>
-<p style="text-align: center;" *ngIf="computers.length === 0">No Computer added yet.</p>
+<p style="text-align: center;" *ngIf="isLoading">Loading...</p>
+<p style="text-align: center;" *ngIf="computers.length === 0 && !isLoading">No Computer added yet.</p>

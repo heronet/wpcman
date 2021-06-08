@@ -1,0 +1,65 @@
+<div class="container" >
+    <p style="margin-top: 10px; margin-bottom: 0; font-size: 1.5rem;">Computer Details</p>
+    <hr style="width: 100%;">
+    <div class="item" *ngIf="pc && !isLoading">
+        <div class="items" *ngIf="!isModifying">
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div style="display: flex; width: 100%;">
+                    <span style="font-size: 1.3rem; padding-top: 10px;">{{pc.name}}</span>
+                    <span style="flex: 1 1 auto"></span>
+                    <button (click)="toggleModify()" *ngIf="isAuthenticated">Modify</button>
+                </div>
+                <hr style="width: 100%;">
+            </div>
+            <div style="display: flex;">
+                <span>Processor</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.cpu}}</span>
+            </div>
+            <div style="display: flex;">
+                <span>RAM</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.ram}} GB</span>
+            </div>
+            <div style="display: flex;">
+                <span>HDD</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.hdd}} GB</span>
+            </div>
+            <div style="display: flex;">
+                <span>Motherboard</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.motherboard}}</span>
+            </div>
+            <div style="display: flex;">
+                <span>Monitor</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.monitor}}</span>
+            </div>
+            <div style="display: flex;">
+                <span>PSU</span>
+                <span style="flex: 1 1 auto"></span>
+                <span>{{pc.hdd}}</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span>Description</span>
+                <hr style="width: 100%;">
+                <span>{{pc.description}}</span>
+            </div>
+        </div>
+        <form class="items" #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="isModifying">
+            <p style="font-size: 1.5rem; text-align: center; margin-top: 0;">Modify Computer</p>
+            <input [(ngModel)]="pc.name" type="text" name="name" id="name" placeholder="Name" class="field" required>
+            <input [(ngModel)]="pc.cpu" type="text" name="cpu" id="cpu" placeholder="Processor" class="field" required>
+            <input [(ngModel)]="pc.ram" type="number" name="ram" id="ram" placeholder="RAM" class="field" required>
+            <input [(ngModel)]="pc.hdd" type="number" name="hdd" id="hdd" placeholder="HDD" class="field" required>
+            <input [(ngModel)]="pc.motherboard" type="text" name="motherboard" id="motherboard" placeholder="Motherboard" class="field" required>
+            <input [(ngModel)]="pc.monitor" type="text" name="monitor" id="monitor" placeholder="Monitor" class="field" required>
+            <input [(ngModel)]="pc.psu" type="text" name="psu" id="psu" placeholder="PSU" class="field" required>
+            <textarea cols="6" [(ngModel)]="pc.description" type="text" name="description" id="description" placeholder="Description" class="field" required></textarea>
+            <button type="submit" [disabled]="isLoading || form.invalid" style="background-color: royalblue;">{{isLoading ? 'Please Wait...': 'Save'}}</button>
+            <button type="button" [disabled]="isLoading" (click)="toggleModify()" style="margin-top: 5px;">{{isLoading ? 'Please Wait...': 'Cancel'}}</button>
+            <p *ngIf="serverError" class="error-text">{{serverError}}</p>
+        </form>
+</div>
+<p style="text-align: center;" *ngIf="isLoading">Loading...</p>

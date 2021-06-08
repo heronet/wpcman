@@ -11,6 +11,7 @@ import { ToolbarComponent } from './core/toolbar/toolbar.component';
 import { TokenInterceptor } from './utils/token.interceptor';
 import { ComputersComponent } from './core/computers/computers.component';
 import { AddComputerComponent } from './core/computers/add-computer/add-computer.component';
+import { ViewComputerComponent } from './core/computers/view-computer/view-computer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AddComputerComponent } from './core/computers/add-computer/add-computer
     JoinComponent,
     CoreComponent,
     ComputersComponent,
-    AddComputerComponent
+    AddComputerComponent,
+    ViewComputerComponent
   ],
   imports: [
     BrowserModule,

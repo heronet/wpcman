@@ -13,7 +13,13 @@ export class ComputerService {
   getComputers() {
     return this.http.get<Computer[]>(`${this.BASE_URL}/computers`);
   }
+  getComputer(id: string) {
+    return this.http.get<Computer>(`${this.BASE_URL}/computers/${id}`);
+  }
   addComputer(computer: Partial<Computer>) {
     return this.http.post(`${this.BASE_URL}/computers`, computer);
+  }
+  modifyComputer(computer: Partial<Computer>) {
+    return this.http.put(`${this.BASE_URL}/computers`, computer);
   }
 }

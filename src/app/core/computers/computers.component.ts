@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Computer } from 'src/app/models/Computer';
+import { AuthService } from 'src/app/services/auth.service';
 import { ComputerService } from 'src/app/services/computer.service';
 
 @Component({
@@ -7,16 +9,32 @@ import { ComputerService } from 'src/app/services/computer.service';
   templateUrl: './computers.component.html',
   styleUrls: ['./computers.component.scss']
 })
-export class ComputersComponent implements OnInit {
+export class ComputersComponent implements OnInit, OnDestroy {
   computers: Computer[] = [] ;
-  constructor(private computerService: ComputerService) { }
+  isAuthenticated = false;
+  isLoading = false;
+  authSub: Subscription;
+  constructor(private computerService: ComputerService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.computerService.getComputers().subscribe(data => {
+      this.isLoading = false;
       this.computers = data;
-      console.log(data);
+    }, err => {
+      this.isLoading = true;
+      console.log(err);
       
     })
+    this.authSub = this.authService.authUser$.subscribe(authData => {
+      if(authData !== null)
+        this.isAuthenticated = true;
+      else
+        this.isAuthenticated = false;
+    })
+  }
+  ngOnDestroy() {
+    this.authSub.unsubscribe();
   }
 
 }
