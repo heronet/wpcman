@@ -16,6 +16,9 @@ export class ComputerService {
   getComputer(id: string) {
     return this.http.get<Computer>(`${this.BASE_URL}/computers/${id}`);
   }
+  deleteComputer(id: string) {
+    return this.http.delete(`${this.BASE_URL}/computers/${id}`);
+  }
   addComputer(computer: Partial<Computer>) {
     return this.http.post(`${this.BASE_URL}/computers`, computer);
   }

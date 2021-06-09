@@ -33,6 +33,15 @@ export class ComputersComponent implements OnInit, OnDestroy {
         this.isAuthenticated = false;
     })
   }
+  deletePC(i: number) {
+    this.computerService.deleteComputer(this.computers[i].id).subscribe(() => {
+      this.computers.splice(i, 1);
+    }, err => {
+      console.log(err);
+      
+    })
+    
+  }
   ngOnDestroy() {
     this.authSub.unsubscribe();
   }
